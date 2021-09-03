@@ -1,0 +1,4 @@
+administer test_module configuration:
+  title: 'Administer test_module configuration'
+  description: 'Optional description.'
+  restrict access: true
