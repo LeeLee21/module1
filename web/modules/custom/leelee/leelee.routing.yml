@@ -1,0 +1,9 @@
+leelee.first_page:
+  path:  '/leelee/cats'
+  defaults:
+    _controller: '\Drupal\leelee\Controller\CatsController::content'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
+

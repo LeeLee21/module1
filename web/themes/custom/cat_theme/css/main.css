@@ -1,0 +1,38 @@
+.dialog-off-canvas-main-canvas .navbar-default {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+.dialog-off-canvas-main-canvas .navbar-default .navbar-nav > .active > a, .dialog-off-canvas-main-canvas .navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+}
+.dialog-off-canvas-main-canvas .navbar-default .navbar-nav a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: grey;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  padding: 3px 0 3px 0;
+  margin: 0 10px 0;
+}
+.dialog-off-canvas-main-canvas .navbar-default .navbar-nav a:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #fc9090;
+  transition: left 0.3s;
+  position: absolute;
+  left: -100%;
+  top: calc(100% - 3px);
+}
+.dialog-off-canvas-main-canvas .navbar-default .navbar-nav a:hover {
+  text-decoration: none;
+}
+.dialog-off-canvas-main-canvas .navbar-default .navbar-nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+/*# sourceMappingURL=main.css.map */
