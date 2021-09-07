@@ -18,10 +18,11 @@ class CatsController {
    *   A simple renderable array.
    */
   public function content() {
-    $element = array(
+    $form = \Drupal::formBuilder()->getForm('\Drupal\leelee\Form\catsform');
+    return [
       '#theme' => 'cat-theme',
-    );
-    return $element;
+      '#form' => $form,
+    ];
   }
 
 }

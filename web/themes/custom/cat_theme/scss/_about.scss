@@ -1,0 +1,10 @@
+@import "variables";
+@import "fonts";
+
+.content{
+  color: $grey;
+  h2:before{
+    content: "♥ ";
+    color: $peachy;
+  }
+}

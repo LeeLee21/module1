@@ -1,20 +1,30 @@
+@import "variables";
+@import "fonts";
+
 .dialog-off-canvas-main-canvas{
   .navbar-default{
     background-color: transparent;
-    border: none;
+    border: 3px solid $peachy;
     display: flex;
     align-items: center;
+    border-radius: 20px;
+    .navbar-header{
+      .logo{
+        padding: 0;
+      }
+    }
+
     .navbar-nav{
       > .active > a {
         &,&:focus {
           background-color: transparent;
+          color:$peachy;
         }
       }
       a{
         text-transform: uppercase;
         font-weight: bold;
-        color: grey;
-
+        color: $grey;
         display: inline-block;
         position: relative;
         overflow: hidden;
@@ -25,7 +35,7 @@
           display: block;
           width: 0;
           height: 3px;
-          background: #fc9090;
+          background: $peachy;
           transition: left .3s;
           position: absolute;
           left: -100%;
@@ -33,6 +43,7 @@
         }
         &:hover{
           text-decoration: none;
+          color: $peachy;
         }
         &:hover::after{
           width: 100%;
@@ -42,4 +53,5 @@
     }
   }
 }
+
 
