@@ -32,15 +32,15 @@ class catsform extends FormBase {
   }
   public function validateForm(array &$form, FormStateInterface $form_state){
     if (strlen($form_state->getValue('name')) < 2) {
-      $form_state->setErrorByName('name', $this->t('Name is too short.'));
+      $form_state->setErrorByName('name', $this->t('Sorry =( Name is too short.'));
     }
     if (strlen($form_state->getValue('name')) > 32) {
-      $form_state->setErrorByName('name', $this->t('Name is too long.'));
+      $form_state->setErrorByName('name', $this->t('Sorry =( Name is too long'));
     }
 
   }
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->messenger()->addStatus($this->t('YAY!!! You added your cat =)☺'));
+    $this->messenger()->addStatus($this->t('YAY!!! You added your cat =)'));
     $form_state->setRedirect('<front>');
   }
 }
