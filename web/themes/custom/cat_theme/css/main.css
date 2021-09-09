@@ -42,30 +42,30 @@
   content: "♥";
   color: #ffa2a2;
 }
-.main-container .collect-phone {
+.main-container .catsform {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-.main-container .collect-phone .form-type-textfield {
+.main-container .catsform .form-type-textfield {
   display: flex;
   align-items: center;
   margin: 0;
 }
-.main-container .collect-phone .form-type-textfield .control-label {
+.main-container .catsform .form-type-textfield .control-label {
   text-transform: uppercase;
   white-space: nowrap;
   margin: 0 15px 0 0;
   color: #808080FF;
 }
-.main-container .collect-phone .form-type-textfield .control-label:before {
+.main-container .catsform .form-type-textfield .control-label:before {
   content: "* ";
   color: #FF0000FF;
 }
-.main-container .collect-phone .form-type-textfield .control-label:after {
+.main-container .catsform .form-type-textfield .control-label:after {
   display: none;
 }
-.main-container .collect-phone .form-type-textfield .form-text {
+.main-container .catsform .form-type-textfield .form-text {
   max-width: 410px;
   margin-right: 15px;
   border-radius: 10px;
@@ -74,12 +74,12 @@
   font-weight: bold;
   text-transform: uppercase;
 }
-.main-container .collect-phone .form-type-textfield .form-text::placeholder {
+.main-container .catsform .form-type-textfield .form-text::placeholder {
   color: #ffa2a2;
   text-transform: none;
   font-weight: lighter;
 }
-.main-container .collect-phone .btn-success {
+.main-container .catsform .btn-success {
   border: none;
   background-color: #ffa2a2;
   color: white;
@@ -87,12 +87,12 @@
   font-weight: bold;
   border-radius: 10px;
 }
-.main-container .collect-phone .btn-success:hover {
+.main-container .catsform .btn-success:hover {
   color: #ffa2a2;
   background-color: transparent;
   transition: 0.4s ease;
 }
-.main-container .collect-phone .btn-success:focus {
+.main-container .catsform .btn-success:focus {
   outline: none;
   box-shadow: none;
 }
