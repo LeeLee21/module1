@@ -1,0 +1,4 @@
+leelee-style:
+  css:
+    theme:
+      css/module-cats.css: {}

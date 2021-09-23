@@ -1,0 +1,7 @@
+cats:
+  path: '/rgb/cats'
+  defaults:
+    _controller: '\Drupal\rgb\Controller\CatsController::content'
+    _title: 'Cats'
+  requirements:
+    _permission: 'access content'
