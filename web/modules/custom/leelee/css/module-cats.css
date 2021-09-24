@@ -22,7 +22,7 @@
 .main-container .title {
   color: #808080FF;
   font-size: 34px;
-  text-align: center;
+  text-align: left;
 }
 .main-container .title:before, .main-container .title:after {
   content: "♥";
@@ -36,7 +36,7 @@
 .main-container .catsform .form-item-name {
   display: flex;
   align-items: center;
-  margin: 0 auto 15px;
+  /*margin: 0 auto 15px;*/
 }
 .main-container .catsform .form-item-name .control-label {
   text-transform: uppercase;
@@ -68,7 +68,7 @@
 .main-container .catsform .form-item-email {
   display: flex;
   align-items: center;
-  margin: 0 auto 15px;
+  /*margin: 0 auto 15px;*/
 }
 .main-container .catsform .form-item-email .control-label {
   text-transform: uppercase;
@@ -107,6 +107,8 @@
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 10px;
+  position: relative;
+  left: -50px;
 }
 .main-container .catsform .form-actions .btn-success:hover {
   color: #ffa2a2;
@@ -119,4 +121,46 @@
 }
 .form .catsform .input-group-addon{
   display: none;
+}
+/*Item Image*/
+.form .catsform #ajax-wrapper .form-item-image{
+  display: flex;
+  align-items: center;
+  width: 572px;
+  margin-bottom: 15px;
+}
+.main-container .catsform .form-item-image .control-label {
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0 13px 0 0;
+  color: #808080FF;
+}
+.main-container .catsform .form-item-image .control-label:before {
+  content: "* ";
+  color: #FF0000FF;
+}
+.main-container .catsform .form-item-image .control-label:after {
+  display: none;
+}
+.main-container .catsform .form-item-image .form-managed-file{
+  border: none;
+  box-shadow: none;
+}
+.main-container .catsform .form-item-image .form-managed-file .form-control{
+  border: none;
+  box-shadow: none;
+}
+.main-container .catsform .form-item-image .form-managed-file .form-control #file-upload-button{
+  color: #0c97ed;
+}
+/*Item Image*/
+.catsform .messages__wrapper .alert-danger{
+  background-color: transparent;
+  border: 3px solid #ffa2a2;
+  text-align: center;
+  margin: 0 auto 10px;
+  color: #ffa2a2;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
 }

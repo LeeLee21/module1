@@ -36,7 +36,6 @@
 .main-container .title {
   color: #808080FF;
   font-size: 34px;
-  text-align: center;
 }
 .main-container .title:before, .main-container .title:after {
   content: "♥";

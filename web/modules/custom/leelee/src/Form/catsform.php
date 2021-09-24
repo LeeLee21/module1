@@ -39,6 +39,18 @@ class catsform extends FormBase {
       ],
     ];
 
+    $form['image'] = [
+      '#type' => 'managed_file',
+      '#title' => $this->t('your cat photo:'),
+      '#required' => TRUE,
+      '#upload_location' => 'public://',
+      '#upload_validators' => [
+        'file_validate_extensions' => ['jpeg jpg png'],
+        'file_validate_size' => ['2097152'],
+      ],
+
+    ];
+
     $form['actions']['#type'] = 'actions';
 
     $form['actions']['submit'] = [
