@@ -9,6 +9,7 @@ function leelee_theme($existing, $type, $theme, $path)
     "cat-theme"=>[
       "variables"=>[
         'form' => [],
+        'table' => [],
       ]
     ]
   ];

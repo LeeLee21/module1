@@ -32,13 +32,18 @@ function leelee_schema() {
       ],
       'timestamp' => [
         'description' => 'timestamp',
-        'type' => 'int',
+        'type' => 'varchar',
         'not null' => TRUE,
-        'default' => 0,
+        'default' => '',
         'length' => 64,
       ],
     ],
     'primary key' => ['id'],
   ];
   return $schema;
+}
+
+function leelee_uninstall() {
+  # Remove table
+  \Drupal::state()->delete('leelee.leelee');
 }

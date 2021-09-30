@@ -9,6 +9,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 
 class catsform extends FormBase {
   public function getFormId() {
@@ -80,7 +81,22 @@ class catsform extends FormBase {
       $form_state ->setErrorByName('email', $this->t('✗ Email is not valid'));
     }
   }
-  public function submitForm(array &$form, FormStateInterface $form_state) {}
+
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    $image = $form_state->getValue('image');
+    $file = File::load($image[0]);
+    $file->setPermanent();
+    $file->save();
+    \Drupal::database()->insert('leelee')
+      ->fields(['name', 'email', 'image', 'timestamp'])
+      ->values([
+        'name' => $form_state->getValue('name'),
+        'email' => $form_state->getValue('email'),
+        'image' => $image[0],
+        'timestamp' => date('d-m-Y H:i:s', strtotime('+3 hour')),
+      ])
+      ->execute();
+  }
 
   public function validateEmailAjax(array &$form, FormStateInterface $form_state ){
     $response = new AjaxResponse();
@@ -106,4 +122,6 @@ class catsform extends FormBase {
     }
     return $ajax_response;
   }
+
+
 }
