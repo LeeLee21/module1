@@ -23,7 +23,7 @@ class CatsController extends ControllerBase{
   public function content() {
     $form = \Drupal::formBuilder()->getForm('\Drupal\leelee\Form\catsform');
     return [
-      '#theme' => 'cat-theme',
+      '#theme' => 'cat-list',
       '#form' => $form,
       '#table' => $this->getCatslist(),
     ];
@@ -36,30 +36,33 @@ class CatsController extends ControllerBase{
       ->execute()->fetchAll();
     $data = [];
 
-    foreach($query as $row) {
-      $file = File::load($row->image);
+    $cats = [];
+
+    foreach($query as $cat) {
+      $file = File::load($cat->image);
       $uri = $file->getFileUri();
       $pet_image = [
         '#theme' => 'image',
         '#uri' => $uri,
         '#title' => 'Your Cat',
         '#width' => 150,
+        '#height' => 150,
       ];
-      $data [] = [
-        'name' => $row->name,
-        'email' => $row->email,
-        'timestamp' => $row->timestamp,
-        'image' => [
-          'data' => $pet_image,
-        ],
+      $cats [] = [
+        '#theme' => 'cat',
+        '#name' => $cat->name,
+        '#email' => $cat->email,
+        '#timestamp' => $cat->timestamp,
+        '#image' => $pet_image,
       ];
     }
+    return $cats;
 
-    $build['table'] = [
+    /*$build['table'] = [
       '#type' => 'table',
       '#rows' => $data,
     ];
-    return $build;
+    return $build;*/
   }
 
 }

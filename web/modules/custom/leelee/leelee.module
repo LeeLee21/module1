@@ -6,10 +6,18 @@
 function leelee_theme($existing, $type, $theme, $path)
 {
   return [
-    "cat-theme"=>[
+    "cat-list"=>[
       "variables"=>[
         'form' => [],
         'table' => [],
+      ]
+    ],
+    "cat" =>[
+      "variables"=>[
+        'name' => null,
+        'email' => null,
+        'timestamp' => null,
+        'image' => null,
       ]
     ]
   ];
