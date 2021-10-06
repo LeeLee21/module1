@@ -6,4 +6,12 @@
     <div class="cat-name">{{ name }}</div>
     <div class="cat-email">{{ email }}</div>
     <div class="cat-timestamp">{{ timestamp }}</div>
+    {% if user.hasPermission('administer nodes') %}
+      <div class="cat-btn">
+        <div class="edit-cat"><a href="#" class="use-ajax edit-cat-btn"><img
+              src="/modules/custom/leelee/images/edit.png" alt="edit" class="edit-img"></a></div>
+        <div class="delete-cat"><a href="/leelee/deletecat/{{ id }}" class="use-ajax delete-cat-btn" data-dialog-type="modal"><img
+              src="/modules/custom/leelee/images/delete.png" alt="delete" class="delete-img"></a></div>
+      </div>
+    {% endif %}
   </div>

@@ -31,7 +31,7 @@ class CatsController extends ControllerBase{
 
   public function getCatslist(){
     $query = \Drupal::database()->select('leelee', 'l')
-      ->fields('l',['name', 'email', 'image', 'timestamp'])
+      ->fields('l',['name', 'email', 'image', 'timestamp', 'id'])
       ->orderBy('timestamp', 'DESC')
       ->execute()->fetchAll();
     $data = [];
@@ -54,6 +54,8 @@ class CatsController extends ControllerBase{
         '#email' => $cat->email,
         '#timestamp' => $cat->timestamp,
         '#image' => $pet_image,
+        '#id' => $cat->id,
+
       ];
     }
     return $cats;

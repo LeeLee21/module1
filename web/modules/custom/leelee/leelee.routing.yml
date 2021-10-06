@@ -6,4 +6,11 @@ leelee.first_page:
   requirements:
     _permission: 'access content'
 
+leelee.deleteCat:
+  path: '/leelee/deletecat/{catid}'
+  defaults:
+    _form: '\Drupal\leelee\Form\deletecat'
+    _title: 'Are U Sure?'
+  requirements:
+    _role: 'administrator'
 
