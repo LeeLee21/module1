@@ -14,3 +14,11 @@ leelee.deleteCat:
   requirements:
     _role: 'administrator'
 
+leelee.EditCat:
+  path: '/leelee/editcat/{catid}'
+  defaults:
+    _form: '\Drupal\leelee\Form\editcat'
+    _title: 'Are U Sure?'
+  requirements:
+    _role: 'administrator'
+

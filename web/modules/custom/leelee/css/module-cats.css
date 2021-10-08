@@ -177,7 +177,7 @@
   margin-bottom: 20px;
   border-radius: 10px;
   border: 3px solid #ffa2a2;
-  width: 170px;
+  width: 200px;
   text-align: center;
   text-transform: uppercase;
   padding-top: 10px;
@@ -213,7 +213,8 @@
   border: none;
 }
 .ui-widget.ui-widget-content .ui-widget-header .ui-dialog-titlebar-close{
-  display: none;
+  margin-top: 5px;
+  z-index: 101;
 }
 .ui-widget.ui-widget-content .ui-widget-header .ui-dialog-title{
   display: none;

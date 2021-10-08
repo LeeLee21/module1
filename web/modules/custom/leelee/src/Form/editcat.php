@@ -1,35 +1,42 @@
 <?php
-/**
- * @file
- * Contains \Drupal\leelee\Form\catsform.
- */
+
 namespace Drupal\leelee\Form;
+
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\MessageCommand;
-use Drupal\Core\Ajax\RedirectCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\RedirectCommand;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 
-class catsform extends FormBase {
-  public function getFormId() {
-    return 'catsform';
+class editcat extends FormBase {
+
+  public function getFormId()
+  {
+    return 'edit cat';
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state){
+  protected $catid;
 
-    $form['#markup'] = '<p class="title">Hello! You can add here a photo of your cat.</p>';
-
+  public function buildForm(array $form, FormStateInterface $form_state, $catid = null) {
+    $this->id = $catid;
+    $query = \Drupal::database();
+    $data = $query
+      ->select('leelee', 'l')
+      ->condition('l.id', $catid, '=')
+      ->fields('l',['name', 'email', 'image', 'id'])
+      ->execute()->fetchAll();
+    $query_img = json_decode(json_encode($data), TRUE);
     $form['name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your cat’s name:'),
       '#description' => $this->t('min-2 symbols, max-32'),
       '#placeholder' => $this->t('min-2 symbols, max-32'),
       '#required' => TRUE,
+      '#default_value' => $data[0]->name,
     ];
-
     $form['email'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your email:'),
@@ -38,10 +45,11 @@ class catsform extends FormBase {
       '#placeholder' => $this->t('Can only contain Latin letters, Hyphens, or Underscores.'),
       '#ajax' => [
         'callback' => '::validateEmailAjax',
-        'event' => 'keyup',
+        'event' => 'change',
+        'disable-refocus'=> true,
       ],
+      '#default_value' => $data[0]->email,
     ];
-
     $form['image'] = [
       '#type' => 'managed_file',
       '#title' => $this->t('your cat photo:'),
@@ -51,9 +59,8 @@ class catsform extends FormBase {
         'file_validate_extensions' => ['jpeg jpg png'],
         'file_validate_size' => ['2097152'],
       ],
-
+      '#default_value' => [$data[0]->image],
     ];
-
     $form['actions']['#type'] = 'actions';
 
     $form['actions']['submit'] = [
@@ -89,13 +96,12 @@ class catsform extends FormBase {
     $file = File::load($image[0]);
     $file->setPermanent();
     $file->save();
-    \Drupal::database()->insert('leelee')
-      ->fields(['name', 'email', 'image', 'timestamp'])
-      ->values([
+    \Drupal::database()->update('leelee')
+      ->condition('id', $this->id)
+      ->fields([
         'name' => $form_state->getValue('name'),
         'email' => $form_state->getValue('email'),
         'image' => $image[0],
-        'timestamp' => date('d-m-Y H:i:s', strtotime('+3 hour')),
       ])
       ->execute();
   }
@@ -116,17 +122,15 @@ class catsform extends FormBase {
     $ajax_response = new AjaxResponse();
     if ($form_state->hasAnyErrors()){
       foreach ($form_state->getErrors() as $errorname)
-      $ajax_response ->addCommand(new MessageCommand($errorname));
-    \Drupal::messenger()->deleteAll();
+        $ajax_response ->addCommand(new MessageCommand($errorname));
+      \Drupal::messenger()->deleteAll();
     }
     else{
+      $ajax_response ->addCommand(new MessageCommand($this->t('✓ Your added your cat =)')));
       $url = Url::fromRoute('leelee.first_page');
       $command = new RedirectCommand($url->toString());
       $ajax_response->addCommand($command);
-      $ajax_response ->addCommand(new MessageCommand($this->t('✓ Your added your cat =)')));
     }
     return $ajax_response;
   }
-
-
 }
