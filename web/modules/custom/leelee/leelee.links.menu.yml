@@ -1,0 +1,6 @@
+leelee.cats.admin:
+  title: 'Cats'
+  parent: system.admin_structure
+  description: 'Cat List'
+  route_name: leelee.AdminCats
+  weight: 100

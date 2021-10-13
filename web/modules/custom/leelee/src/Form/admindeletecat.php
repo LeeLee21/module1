@@ -6,7 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Url;
 
-class deletecat extends ConfirmFormBase{
+class admindeletecat extends ConfirmFormBase{
 
   public $catid;
 
@@ -19,7 +19,7 @@ class deletecat extends ConfirmFormBase{
   }
 
   public function getCancelUrl() {
-    return new Url('leelee.first_page');
+    return new Url('leelee.AdminCats');
   }
 
   public function getDescription() {
@@ -52,6 +52,6 @@ class deletecat extends ConfirmFormBase{
       ->condition('id', $this->id)
       ->execute();
     \Drupal::messenger()->addStatus('U Deleted ur KITTY');
-    $form_state->setRedirect('leelee.first_page');
+    $form_state->setRedirect('leelee.AdminCats');
   }
 }

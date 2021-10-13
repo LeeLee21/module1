@@ -35,7 +35,6 @@ class CatsController extends ControllerBase{
       ->fields('l',['name', 'email', 'image', 'timestamp', 'id'])
       ->orderBy('timestamp', 'DESC')
       ->execute()->fetchAll();
-    $data = [];
 
     $cats = [];
 
@@ -56,7 +55,6 @@ class CatsController extends ControllerBase{
         '#timestamp' => $cat->timestamp,
         '#image' => $pet_image,
         '#id' => $cat->id,
-
       ];
     }
     return $cats;

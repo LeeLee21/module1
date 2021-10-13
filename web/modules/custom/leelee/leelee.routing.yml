@@ -22,3 +22,26 @@ leelee.EditCat:
   requirements:
     _role: 'administrator'
 
+leelee.AdminCats:
+  path: '/admin/structure/cats'
+  defaults:
+    _form: '\Drupal\leelee\Form\admincatsform'
+    _title: 'Cats'
+  requirements:
+    _permission: 'administer site configuration'
+
+leelee.AdminDeleteCat:
+  path: '/dj/admin/delete-cat/{catid}'
+  defaults:
+    _form: '\Drupal\leelee\Form\admindeletecat'
+    _title: 'Delete?'
+  requirements:
+    _permission: 'administer site configuration'
+
+leelee.AdminEditCat:
+  path: '/dj/admin/edit-cat/{catid}'
+  defaults:
+    _form: '\Drupal\leelee\Form\admineditcat'
+    _title: 'Edit'
+  requirements:
+    _permission: 'administer site configuration'

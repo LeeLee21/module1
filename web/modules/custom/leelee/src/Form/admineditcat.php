@@ -11,7 +11,7 @@ use Drupal\Core\Ajax\RedirectCommand;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 
-class editcat extends FormBase {
+class admineditcat extends FormBase {
 
   public function getFormId()
   {
@@ -127,7 +127,7 @@ class editcat extends FormBase {
     }
     else{
       $ajax_response ->addCommand(new MessageCommand($this->t('✓ Your added your cat =)')));
-      $url = Url::fromRoute('leelee.first_page');
+      $url = Url::fromRoute('leelee.AdminCats');
       $command = new RedirectCommand($url->toString());
       $ajax_response->addCommand($command);
     }
