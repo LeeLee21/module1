@@ -65,7 +65,7 @@ class editcat extends FormBase {
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Add cat'),
+      '#value' => $this->t('Edit Cat'),
       '#button_type' => 'primary',
       '#ajax' => [
         'callback' => '::ajaxSubmitCallback',
